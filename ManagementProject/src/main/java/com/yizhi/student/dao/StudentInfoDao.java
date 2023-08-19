@@ -17,9 +17,11 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface StudentInfoDao {
 
+	Integer getAll(String name, int tocollegelId, int tomajorId, int classId);
+
 	StudentInfoDO get(Integer id);
 	
-	List<StudentInfoDO> list(Map<String,Object> map);
+	List<StudentInfoDO> list(int start, int pageSize, String name, int tocollegelId, int tomajorId, int classId);
 	
 	int count(Map<String,Object> map);
 	

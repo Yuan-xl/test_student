@@ -1,10 +1,7 @@
 package com.yizhi.student.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yizhi.common.annotation.Log;
@@ -33,9 +30,6 @@ import com.yizhi.student.service.StudentInfoService;
 @RequestMapping("/student/studentInfo")
 public class StudentInfoController {
 
-	
-
-
 	@Autowired
 	private StudentInfoService studentInfoService;
     //
@@ -44,8 +38,10 @@ public class StudentInfoController {
 	@PostMapping("/save")
 	@RequiresPermissions("student:studentInfo:add")
 	public R save(StudentInfoDO studentInfoDO){
-	
-		return null;
+		if (studentInfoService.save(studentInfoDO) > 0) {
+			return R.ok("保存成功");
+		}
+		return R.error("请稍后再试！");
 	}
 
 	/**
@@ -55,8 +51,7 @@ public class StudentInfoController {
 	@GetMapping("/list")
 	@RequiresPermissions("student:studentInfo:studentInfo")
 	public PageUtils list(@RequestParam Map<String, Object> params){
-
-		return null;
+		return studentInfoService.list(params);
 
 	}
 
@@ -69,8 +64,10 @@ public class StudentInfoController {
 	@PostMapping("/update")
 	@RequiresPermissions("student:studentInfo:edit")
 	public R update(StudentInfoDO studentInfo){
-
-		return null;
+		if (studentInfoService.update(studentInfo) > 0) {
+			return R.ok("修改成功");
+		}
+		return R.error("请稍后再试！");
 	}
 
 	/**
@@ -81,7 +78,10 @@ public class StudentInfoController {
 	@ResponseBody
 	@RequiresPermissions("student:studentInfo:remove")
 	public R remove( Integer id){
-		return null;
+		if (studentInfoService.remove(id)>0) {
+			return R.ok("删除成功");
+		}
+		return R.error("请稍后再试！");
 	}
 	
 	/**
@@ -92,8 +92,10 @@ public class StudentInfoController {
 	@ResponseBody
 	@RequiresPermissions("student:studentInfo:batchRemove")
 	public R remove(@RequestParam("ids[]") Integer[] ids){
-
-		return null;
+		if (studentInfoService.batchRemove(ids)>0) {
+			return R.ok("删除成功");
+		}
+		return R.error("请稍后再试！");
 	}
 
 

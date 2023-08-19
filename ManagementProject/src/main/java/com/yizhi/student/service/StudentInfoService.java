@@ -1,5 +1,6 @@
 package com.yizhi.student.service;
 
+import com.yizhi.common.utils.PageUtils;
 import com.yizhi.student.domain.StudentInfoDO;
 
 import java.util.List;
@@ -13,10 +14,12 @@ import java.util.Map;
  * @date 2019-08-01 09:45:46
  */
 public interface StudentInfoService {
+
+	Integer getAll(String name, int tocollegelId, int tomajorId, int classId);
 	
 	StudentInfoDO get(Integer id);
 	
-	List<StudentInfoDO> list(Map<String, Object> map);
+	PageUtils list(Map<String, Object> params);
 	
 	int count(Map<String, Object> map);
 	

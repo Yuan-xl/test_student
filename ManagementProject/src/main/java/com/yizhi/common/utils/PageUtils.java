@@ -21,6 +21,9 @@ public class PageUtils implements Serializable {
 	//状态码
 	private int code=0;
 
+	public PageUtils() {
+	}
+
 	/**
 	 * 分页
 	 * 

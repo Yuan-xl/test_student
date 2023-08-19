@@ -1,11 +1,10 @@
 package com.yizhi.student.domain;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-
 
 
 /**
@@ -45,7 +44,7 @@ public class StudentInfoDO implements Serializable {
 	//手机号
 	private String telephone;
 	//科类
-	private Integer subjectType;
+	private String subjectType;///
 	//所属学院
 	private Integer tocollege;
 	//隶属校区*****
@@ -231,13 +230,13 @@ public class StudentInfoDO implements Serializable {
 	/**
 	 * 设置：科类
 	 */
-	public void setSubjectType(Integer subjectType) {
+	public void setSubjectType(String subjectType) {
 		this.subjectType = subjectType;
 	}
 	/**
 	 * 获取：科类
 	 */
-	public Integer getSubjectType() {
+	public String getSubjectType() {
 		return subjectType;
 	}
 	/**
